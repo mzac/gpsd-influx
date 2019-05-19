@@ -21,6 +21,20 @@ http://catb.org/gpsd/gpsd_json.html
 - [ ] Create Docker Image
 
 # Installation
+## InfluxDB
+Installation instructions for InfluxDB: https://docs.influxdata.com/influxdb/v1.7/introduction/installation/
+
+Once you have Influx installed, then run the following commands to create a database for gpsd:
+```
+influx
+CREATE DATABASE "gpsd"
+```
+
+If you only want to keep data for a specific number of days:
+```
+influx
+CREATE DATABASE "gpsd" WITH DURATION 30d
+```
 
 # Important
 

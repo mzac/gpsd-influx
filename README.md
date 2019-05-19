@@ -9,6 +9,9 @@ https://grafana.com/dashboards/10226
 JSON output of gpspipe
 http://catb.org/gpsd/gpsd_json.html
 
+GPS on Raspberry Pi
+http://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B
+
 # Requirements
 * A serial GPS
 * A dedicated computer to run the daemon on (I use a Raspberry Pi B)

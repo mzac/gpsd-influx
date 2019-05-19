@@ -36,5 +36,31 @@ influx
 CREATE DATABASE "gpsd" WITH DURATION 30d
 ```
 
+## gpsd-influx script
+
+Debian based install
+```
+apt-get update
+apt-get install -y gpsd
+```
+
+Once it is intalled, make sure to edit */etc/default/gpsd* and change the *DEVICES* line to match the device for your GPS, ex:
+```
+# Default settings for the gpsd init script and the hotplug wrapper.
+
+# Start the gpsd daemon automatically at boot time
+START_DAEMON="true"
+
+# Use USB hotplugging to add new USB devices automatically to the daemon
+USBAUTO="true"
+
+# Devices gpsd should collect to at boot time.
+# They need to be read/writeable, either by user gpsd or the group dialout.
+DEVICES="/dev/ttyUSB0"
+
+# Other options you want to pass to gpsd
+GPSD_OPTIONS=""
+```
+
 # Important
 

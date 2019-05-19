@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Your InfluxDB Server
 influx_url="http://influx.lab.local:8086"
+# Your InfluxDB Database
 influx_db="gpsd"
+# Number of seconds between updates
 update_interval=10
 
 for arg in "$@"

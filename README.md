@@ -1,5 +1,3 @@
-# gpsd-influx
-
 # Introduction
 This script can be run as a daemon to collect information from a GPS and push it into an Influx Database.  This can be useful for tracking or for monitoring GPS drift.
 

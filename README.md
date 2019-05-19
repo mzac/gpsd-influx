@@ -14,12 +14,14 @@ http://catb.org/gpsd/gpsd_json.html
 * A dedicated computer to run the daemon on (I use a Raspberry Pi B)
 * gpsd (http://www.catb.org/gpsd/)
 * InfluxDB (https://www.influxdata.com/)
+* Python
 
 # Optional
 * Grafana for visualizing the data (https://grafana.com/)
 
 # Todo
 - [ ] Create Docker Image
+- [ ] Re-write script in Python
 
 # Installation
 ## InfluxDB

@@ -80,7 +80,96 @@ gpspipe -w -n 5
 On the TPV line you should see your latitude and longitude displayed.
 
 # gpsd-influx script
-Now that 
+Now that gpsd is installed and working, you can install the script.
+
+```
+git clone https://github.com/mzac/gpsd-influx.git /opt/gpsd-influx
+chmod a+x /opt/gpsd-influx/gpsd-influx.sh
+```
+
+Edit the script and make sure to change the variables at the top to match your configuration:
+```
+# Your InfluxDB Server
+influx_url="http://influx.lab.local:8086"
+# Your InfluxDB Database
+influx_db="gpsd"
+# Number of seconds between updates
+update_interval=10
+```
+
+Once that is complete, you can test the script with the debug flag:
+```
+/opt/gpsd-influx/gpsd-influx.sh -d
+--------------------------------------------------------------------------------
+TPV
+{
+    "alt": 38.627,
+    "class": "TPV",
+    "climb": 0.0,
+    "device": "/dev/ttyUSB0",
+    "epc": 64.4,
+    "eps": 29.23,
+    "ept": 0.005,
+    "epv": 32.2,
+    "epx": 8.341,
+    "epy": 14.615,
+    "lat": 45.xxxxxxxxx,
+    "lon": -73.xxxxxxxxx,
+    "mode": 3,
+    "speed": 0.0,
+    "time": "2019-05-19T14:40:12.000Z",
+    "track": 0.0
+}
+--------------------------------------------------------------------------------
+Sending to Influx:
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=alt value=38.627
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=climb value=0.0
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=epc value=64.4
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=eps value=29.23
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=ept value=0.005
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=epv value=32.2
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=epx value=8.341
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=epy value=14.615
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=lat value=45.xxxxxxxxx
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=lon value=-73.xxxxxxxxx
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=mode value=3
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=speed value=0.0
+gpsd,host=pi-gpsd,device="/dev/ttyUSB0",tpv=track value=0.0
+--------------------------------------------------------------------------------
+HTTP/1.1 204 No Content
+Content-Type: application/json
+Request-Id: 04355c63-7a44-11e9-9970-0242ac130002
+X-Influxdb-Build: OSS
+X-Influxdb-Version: 1.7.6
+X-Request-Id: 04355c63-7a44-11e9-9970-0242ac130002
+Date: Sun, 19 May 2019 14:40:15 GMT
+
+```
+If you didn't get any errors you should be good to go to setup the script to run as a daemon.
+
+```
+cat <<EOF >> /etc/systemd/system/gpsd-influx.service
+
+[Unit]
+Description=GPSD to Influx
+After=syslog.target
+
+[Service]
+ExecStart=/opt/gpsd-influx/gpsd-influx.sh
+KillMode=process
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Now you can enable and start the daemon:
+```
+systemctl enable gpsd-influx.service
+systemctl start gpsd-influx.service
+```
 
 # Important
 

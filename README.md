@@ -3,6 +3,10 @@
 # Introduction
 This script can be run as a daemon to collect information from a GPS and push it into an Influx Database.  This can be useful for tracking or for monitoring GPS drift.
 
+![grafana dashboard](https://github.com/mzac/gpsd-influx/blob/master/gpsd-grafana.png)
+
+https://grafana.com/dashboards/10226
+
 # Reference
 JSON output of gpspipe
 http://catb.org/gpsd/gpsd_json.html
@@ -169,8 +173,3 @@ Now you can enable and start the daemon:
 systemctl enable gpsd-influx.service
 systemctl start gpsd-influx.service
 ```
-
-# Graphing
-
-Now that data is being sent into InfluxDB, you can create a custom dashboard to visualise your data.  You can see an example dashboard here:
-

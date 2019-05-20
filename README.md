@@ -3,15 +3,13 @@ This script can be run as a daemon to collect information from a GPS and push it
 
 ![grafana dashboard](https://github.com/mzac/gpsd-influx/blob/master/gpsd-grafana.png)
 
-Grafana Dashboard: https://grafana.com/dashboards/10226
-Dashboard Source: https://github.com/mzac/gpsd-influx/blob/master/gpsd-1558277406816.json
+* Grafana Dashboard: https://grafana.com/dashboards/10226
+* Dashboard Source: https://github.com/mzac/gpsd-influx/blob/master/gpsd-1558277406816.json
 
 # Reference
-JSON output of gpspipe
-http://catb.org/gpsd/gpsd_json.html
+* JSON output of gpspipe: http://catb.org/gpsd/gpsd_json.html
 
-GPS on Raspberry Pi
-http://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B
+* GPS on Raspberry Pi: http://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B
 
 # Requirements
 * A serial GPS

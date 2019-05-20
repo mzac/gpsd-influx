@@ -3,7 +3,8 @@ This script can be run as a daemon to collect information from a GPS and push it
 
 ![grafana dashboard](https://github.com/mzac/gpsd-influx/blob/master/gpsd-grafana.png)
 
-https://grafana.com/dashboards/10226
+Grafana Dashboard: https://grafana.com/dashboards/10226
+Dashboard Source: https://github.com/mzac/gpsd-influx/blob/master/gpsd-1558277406816.json
 
 # Reference
 JSON output of gpspipe

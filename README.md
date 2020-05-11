@@ -23,7 +23,7 @@ This script can be run as a daemon to collect information from a GPS and push it
 
 # Todo
 - [ ] Create Docker Image
-- [ ] Re-write script in Python
+- [x] Re-write script in Python (done but needs testing)
 
 # Installation
 ## InfluxDB
